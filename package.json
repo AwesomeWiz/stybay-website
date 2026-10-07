@@ -1,0 +1,39 @@
+{
+  "name": "stybay",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "node scripts/serve.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "assets:optimize": "node scripts/optimize-assets.mjs",
+    "test:visual": "node scripts/visual-check.mjs",
+    "test:interactions": "node scripts/interaction-check.mjs",
+    "test:a11y": "node scripts/accessibility-check.mjs",
+    "test:waitlist": "node scripts/waitlist-check.mjs",
+    "format": "prettier --write app components lib scripts *.ts *.mjs *.json README.md"
+  },
+  "dependencies": {
+    "gsap": "^3.14.0",
+    "lenis": "^1.3.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.0.0",
+    "prettier": "^3.9.9",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.0"
+  }
+}
