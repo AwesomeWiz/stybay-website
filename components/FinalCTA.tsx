@@ -1,12 +1,14 @@
-import { Brand, Label, ProductImage } from "./Primitives";
+import { Label, ProductImage } from "./Primitives";
+import { site } from "@/lib/site";
+import { productPools } from "@/lib/productCatalog";
 
-const TALLY_WAITLIST_URL = "https://tally.so/r/0Qpg8P";
+const TALLY_WAITLIST_URL = site.waitlist;
 
 export default function FinalCTA() {
   return (
     <section className="final-cta section-pad" id="early-access">
       <div className="final-strip" aria-hidden="true">
-        {[8, 3, 17, 10, 15, 19, 14].map((n) => (
+        {productPools.homeCallback.map((n) => (
           <ProductImage index={n} key={n} decorative />
         ))}
       </div>
@@ -26,6 +28,7 @@ export default function FinalCTA() {
           action={TALLY_WAITLIST_URL}
           method="get"
           target="_blank"
+          rel="noopener noreferrer"
           className="waitlist-form"
         >
           <button type="submit">
@@ -38,15 +41,6 @@ export default function FinalCTA() {
         </span>
       </div>
 
-      <footer>
-        <a href="#" aria-label="StyBay home">
-          <Brand />
-        </a>
-
-        <p>Fashion, perfectly found.</p>
-
-        <span>© {new Date().getFullYear()} StyBay</span>
-      </footer>
     </section>
   );
 }

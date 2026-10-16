@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ProductImage, Label } from "./Primitives";
 import { brand } from "@/lib/assets";
+import { productPools } from "@/lib/productCatalog";
 export default function ProblemSection() {
   const ref = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
@@ -61,7 +62,7 @@ export default function ProblemSection() {
           className="tabs-composition"
           aria-label="Products from separate store windows coming together in StyBay"
         >
-          {[0, 12, 19].map((n, i) => (
+          {productPools.homeWindows.map((n, i) => (
             <div className={"browser-window window-" + i} key={n}>
               <div className="window-bar">
                 <i />

@@ -3,4 +3,9 @@
   <url>
     <loc>https://stybay.com/</loc>
   </url>
+  <url><loc>https://stybay.com/about</loc></url>
+  <url><loc>https://stybay.com/technology</loc></url>
+  <url><loc>https://stybay.com/contact</loc></url>
+  <url><loc>https://stybay.com/privacy-policy</loc></url>
+  <url><loc>https://stybay.com/terms</loc></url>
 </urlset>

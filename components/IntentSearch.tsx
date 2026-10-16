@@ -1,29 +1,30 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Label, ProductImage } from "./Primitives";
+import { productPools } from "@/lib/productCatalog";
 const examples = [
   {
     query: "black dress for summer",
     tokens: ["BLACK", "DRESS", "SUMMER"],
-    items: [5, 7, 16],
+    items: productPools.homeSearch[0],
   },
   {
     query: "something blue for the weekend",
     tokens: ["BLUE", "RELAXED", "WEEKEND"],
-    items: [3, 13, 19],
+    items: productPools.homeSearch[1],
   },
   {
     query: "minimal outfit for dinner",
     tokens: ["MINIMAL", "DRESS", "DINNER"],
-    items: [17, 4, 10],
+    items: productPools.homeSearch[2],
   },
   {
     query: "a little floral, a little romantic",
     tokens: ["FLORAL", "SOFT", "ROMANTIC"],
-    items: [0, 8, 14],
+    items: productPools.homeSearch[3],
   },
 ];
-export default function IntentSearch() {
+export default function IntentSearch({ variant = "home" }: { variant?: "home" | "technology" }) {
   const [selected, setSelected] = useState(0);
   const [typed, setTyped] = useState(examples[0].query);
   const [playing, setPlaying] = useState(true);
@@ -79,7 +80,7 @@ export default function IntentSearch() {
   return (
     <section className="intent section-pad" ref={ref}>
       <div className="section-top">
-        <Label>04 / YOUR WORDS. YOUR WORLD.</Label>
+        <Label>{variant === "home" ? "04 / YOUR WORDS. YOUR WORLD." : "YOUR WORDS. YOUR WORLD."}</Label>
         <span className="small-note">A preview of intent-based discovery</span>
       </div>
       <div className="intent-heading" data-reveal>

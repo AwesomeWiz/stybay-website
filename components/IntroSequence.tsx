@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { brand, products } from "@/lib/assets";
+import { productPools } from "@/lib/productCatalog";
 
 export default function IntroSequence() {
   const ref = useRef<HTMLDivElement>(null);
@@ -169,7 +170,7 @@ export default function IntroSequence() {
   return (
     <div className="intro" ref={ref} aria-hidden="true">
       <div className="intro-field">
-        {products.slice(0, 12).map((p, i) => (
+        {productPools.intro.map(n => products[n]).map((p, i) => (
           <div
             className="intro-tile"
             key={p.id}
@@ -177,13 +178,13 @@ export default function IntroSequence() {
               transform: `rotate(${((i % 3) - 1) * 3}deg)`,
             }}
           >
-            <Image
+            <span className="product-frame" data-product-id={p.id}><Image
               src={p.src}
               alt=""
               width={180}
               height={270}
               sizes="160px"
-            />
+            /></span>
           </div>
         ))}
       </div>

@@ -1,13 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./editorial.css";
+import "./technology-lab.css";
+import "./product-frames.css";
+import { site } from "@/lib/site";
 
 const title = "StyBay — Fashion, Perfectly Found";
 
 const description =
   "Discover fashion from across the web in one visual, personalized feed. Search, save and find styles that feel like you. StyBay is coming soon.";
 
-const origin =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://stybay.com";
+const origin = site.origin;
 
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
@@ -78,13 +81,19 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: JSON.stringify([{
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "StyBay",
               url: origin,
               description,
-            }).replace(/</g, "\u003c"),
+            }, {
+              "@context": "https://schema.org", "@type": "Organization",
+              name: "StyBay Technologies", alternateName: "StyBay", url: origin,
+              logo: `${origin}/assets/full_logo.png`,
+              address: { "@type": "PostalAddress", streetAddress: "Rajagiri ORBIIT, Rajagiri School of Engineering & Technology, Kakkanad", addressRegion: "Kerala", postalCode: "682039", addressCountry: "IN" },
+              ...(site.contactEmail ? { email: site.contactEmail } : {}),
+            }]).replace(/</g, "\\u003c"),
           }}
         />
       </body>

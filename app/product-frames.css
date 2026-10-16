@@ -1,0 +1,110 @@
+/* One presentation surface for all product photographs. The imagery itself is
+   normalized at build preparation time; CSS never tries to tint a baked canvas. */
+:root {
+  --product-surface: #f0efeb;
+  --product-radius: 8px;
+}
+.product-frame.product-frame {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2/3;
+  min-width: 0;
+  border-radius: var(--product-radius);
+  overflow: hidden;
+  background: var(--product-surface);
+  mix-blend-mode: normal;
+  isolation: isolate;
+}
+.product-frame.product-frame > img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  aspect-ratio: auto;
+  border-radius: 0;
+  object-fit: contain;
+  background: transparent;
+  mix-blend-mode: normal;
+  transform: none;
+}
+.hero-tile > .product-frame,
+.taste-tile > .product-frame,
+.search-results > figure > .product-frame,
+.taste-product > .product-frame,
+.constellation-item > .product-frame {
+  height: 100%;
+}
+.browser-window > .product-frame {
+  mix-blend-mode: normal;
+}
+.technology-hero-art > .product-frame {
+  width: calc(50% - 7px);
+  flex: 0 0 calc(50% - 7px);
+}
+.technology-page .store-composition figure > .product-frame {
+  width: 95px;
+  flex: 0 0 95px;
+}
+.constellation-item > .product-frame {
+  transform: rotate(var(--tilt));
+}
+.dna-directions button > .product-frame {
+  transition: transform 0.35s ease;
+}
+.dna-directions button:hover > .product-frame {
+  transform: translateY(-4px);
+}
+.final-strip {
+  height: 193px;
+  align-items: flex-start;
+}
+.final-strip > .product-frame {
+  width: 115px;
+  min-width: 115px;
+  flex: 0 0 115px;
+  height: auto;
+  aspect-ratio: 2/3;
+}
+.final-strip > .product-frame:nth-child(2n) {
+  margin-top: 20px;
+}
+@media (max-width: 800px) {
+  .final-strip {
+    height: 160px;
+  }
+  .final-strip > .product-frame {
+    width: 93px;
+    min-width: 93px;
+    flex-basis: 93px;
+  }
+}
+@media (max-width: 700px) {
+  .technology-page .store-composition figure > .product-frame {
+    width: 80px;
+    flex-basis: 80px;
+  }
+  .constellation-item > .product-frame {
+    transform: none;
+  }
+}
+@media (max-width: 500px) {
+  .final-strip {
+    height: 133px;
+  }
+  .final-strip > .product-frame {
+    width: 75px;
+    min-width: 75px;
+    flex-basis: 75px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dna-directions button > .product-frame {
+    transition: none;
+  }
+  .dna-directions button:hover > .product-frame {
+    transform: none;
+  }
+}

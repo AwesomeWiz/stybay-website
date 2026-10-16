@@ -3,12 +3,13 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Label, ProductImage } from "./Primitives";
+import { productPools } from "@/lib/productCatalog";
 const moods = [
-  { name: "Soft & romantic", ids: [8, 14, 0, 19, 3, 17] },
-  { name: "Quiet confidence", ids: [17, 10, 12, 15, 13, 9] },
-  { name: "After dark", ids: [7, 4, 6, 16, 11, 18] },
+  { name: "Soft & romantic", ids: productPools.homeMoods[0] },
+  { name: "Quiet confidence", ids: productPools.homeMoods[1] },
+  { name: "After dark", ids: productPools.homeMoods[2] },
 ];
-export default function PersonalizationSection() {
+export default function PersonalizationSection({ variant = "home" }: { variant?: "home" | "technology" }) {
   const [mood, setMood] = useState(0);
   const ref = useRef<HTMLElement>(null);
   const grid = useRef<HTMLDivElement>(null);
@@ -56,11 +57,9 @@ export default function PersonalizationSection() {
   return (
     <section className="personalization" ref={ref}>
       <div className="taste-copy">
-        <Label>03 / A LITTLE MORE YOU, EVERY DAY</Label>
+        <Label>{variant === "home" ? "03 / A LITTLE MORE YOU, EVERY DAY" : "02 / PERSONALIZED DISCOVERY"}</Label>
         <h2>
-          It notices what
-          <br />
-          catches <em>your eye.</em>
+          {variant === "home" ? <>It notices what<br/>catches <em>your eye.</em></> : <>A feed shaped<br/>around <em>you.</em></>}
         </h2>
         <p>
           The looks you explore. The searches you make.

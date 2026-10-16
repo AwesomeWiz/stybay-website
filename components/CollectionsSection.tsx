@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Label, ProductImage, Phone } from "./Primitives";
 import { ui } from "@/lib/assets";
+import { productPools } from "@/lib/productCatalog";
 export default function CollectionsSection() {
   const ref = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
@@ -48,7 +49,7 @@ export default function CollectionsSection() {
       </div>
       <div className="collection-scene">
         <div className="collection-card collection-left">
-          <ProductImage index={15} />
+          <ProductImage index={productPools.homeCollections[0]} />
           <span>Quiet confidence</span>
         </div>
         <Phone
@@ -56,7 +57,7 @@ export default function CollectionsSection() {
           alt="StyBay profile showing Old Money, Minimalist, and Tailored collections"
         />
         <div className="collection-card collection-right">
-          <ProductImage index={10} />
+          <ProductImage index={productPools.homeCollections[1]} />
           <span>Somewhere sunny</span>
         </div>
         <div className="collection-label">

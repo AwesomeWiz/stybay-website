@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { products, brand } from "@/lib/assets";
 export function ProductImage({
   index,
@@ -13,15 +14,16 @@ export function ProductImage({
 }) {
   const p = products[index];
   return (
-    <Image
-      className={className}
-      src={p.src}
-      alt={decorative ? "" : p.alt}
-      width={p.width}
-      height={p.height}
-      priority={priority}
-      sizes="(max-width: 600px) 40vw, 24vw"
-    />
+    <span className={`product-frame ${className}`} data-product-id={p.id}>
+      <Image
+        src={p.src}
+        alt={decorative ? "" : p.alt}
+        fill
+        preload={priority}
+        style={{ objectFit: "contain" }}
+        sizes="(max-width: 600px) 40vw, 24vw"
+      />
+    </span>
   );
 }
 export function Brand({ className = "" }: { className?: string }) {
@@ -40,15 +42,34 @@ export function Brand({ className = "" }: { className?: string }) {
 export function CTA({
   children = "Get early access",
   className = "",
+  href = "#early-access",
 }: {
   children?: React.ReactNode;
   className?: string;
+  href?: string;
 }) {
-  return (
-    <a className={"cta " + className} href="#early-access">
+  const content = (
+    <>
       {children}
       <span className="cta-dot" aria-hidden="true" />
-    </a>
+    </>
+  );
+  if (href.startsWith("https://"))
+    return (
+      <a
+        className={"cta " + className}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {content}
+        <span className="sr-only"> (opens in a new tab)</span>
+      </a>
+    );
+  return (
+    <Link className={"cta " + className} href={href}>
+      {content}
+    </Link>
   );
 }
 export function Label({ children }: { children: React.ReactNode }) {

@@ -5,8 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ProductImage, CTA, Label, Phone } from "./Primitives";
 import { ui } from "@/lib/assets";
+import { productPools } from "@/lib/productCatalog";
 
-const selection = [8, 3, 1, 17, 9, 14, 10, 18];
+const selection = productPools.homeHero;
 
 export default function HeroDiscovery() {
   const ref = useRef<HTMLElement>(null);

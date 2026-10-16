@@ -6,17 +6,28 @@ const output = path.join(base, "optimized");
 await mkdir(output, { recursive: true });
 let before = 0,
   after = 0;
-for (const folder of ["products", "ui-designs"])
+await import("./normalize-products.mjs");
+for (const folder of ["ui-designs"])
   for (const file of await readdir(path.join(base, folder))) {
+    if (process.argv.includes("--new-products")) continue;
     const input = path.join(base, folder, file);
     const dest = path.join(output, path.parse(file).name + ".webp");
+    // Preserve existing exports when extending the library.
+    if (
+      process.argv.includes("--new-only") &&
+      (await stat(dest).then(
+        () => true,
+        () => false,
+      ))
+    )
+      continue;
     before += (await stat(input)).size;
     await sharp(input)
       .resize({
-        width: folder === "products" ? 640 : 826,
+        width: 826,
         withoutEnlargement: true,
       })
-      .webp({ quality: folder === "products" ? 83 : 94, effort: 6 })
+      .webp({ quality: 94, effort: 6 })
       .toFile(dest);
     after += (await stat(dest)).size;
   }

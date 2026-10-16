@@ -687,7 +687,7 @@ main {
   color: #77766f;
   margin-left: auto;
 }
-.browser-window > img {
+.browser-window > .product-frame {
   width: 100%;
   height: 265px;
   object-fit: cover;
@@ -1149,7 +1149,7 @@ main {
   object-fit: cover;
   mix-blend-mode: multiply;
 }
-.collection-card > span {
+.collection-card > span:not(.product-frame) {
   display: block;
   background: #faf9f6;
   padding: 10px;
@@ -1327,7 +1327,7 @@ main {
   .browser-window {
     width: 150px;
   }
-  .browser-window > img {
+  .browser-window > .product-frame {
     height: 225px;
   }
   .tabs-composition {
@@ -1604,7 +1604,7 @@ main {
   .browser-window {
     width: 132px;
   }
-  .browser-window > img {
+  .browser-window > .product-frame {
     height: 195px;
   }
   .window-1 {
@@ -1793,7 +1793,7 @@ main {
     right: -5px;
     top: 55px;
   }
-  .collection-card > span {
+  .collection-card > span:not(.product-frame) {
     font-size: 8px;
     padding: 8px;
   }
