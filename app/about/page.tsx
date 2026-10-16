@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/ArrowIcons";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import WaitlistCTA from "@/components/WaitlistCTA";
@@ -77,7 +78,7 @@ export default function AboutPage() {
           <em>Find what feels like you.</em>
         </h2>
         <Link className="text-link" href="/technology">
-          Explore the technology <span aria-hidden="true">↗</span>
+          Explore the technology <span aria-hidden="true"><ArrowUpRight /></span>
         </Link>
       </section>
       <WaitlistCTA />

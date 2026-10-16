@@ -1,4 +1,13 @@
 @import "tailwindcss";
+.ui-arrow {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: inherit;
+  background: none;
+}
 @font-face {
   font-family: Satoshi;
   src: local("Satoshi");

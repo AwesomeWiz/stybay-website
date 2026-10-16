@@ -1,4 +1,6 @@
 "use client";
+import { ArrowLeftRight } from "@/components/ArrowIcons";
+
 import { useState, type CSSProperties } from "react";
 import {
   productPools,
@@ -50,7 +52,7 @@ export default function TasteLab() {
           <div className="taste-dimension" key={dimension.id}>
             <label htmlFor={`taste-${dimension.id}`}>
               <span>{dimension.from}</span>
-              <span aria-hidden="true">↔</span>
+              <span aria-hidden="true"><ArrowLeftRight /></span>
               <span>{dimension.to}</span>
             </label>
             <input

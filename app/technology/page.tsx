@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowUpRight } from "@/components/ArrowIcons";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
 import WaitlistCTA from "@/components/WaitlistCTA";
@@ -35,7 +36,7 @@ export default function TechnologyPage() {
               exploration.
             </p>
             <a className="text-link" href="#intelligent-search">
-              Explore the possibilities <span aria-hidden="true">↓</span>
+              Explore the possibilities <span aria-hidden="true"><ArrowDown /></span>
             </a>
           </div>
           <div className="technology-hero-art">
@@ -212,7 +213,7 @@ export default function TechnologyPage() {
         </div>
         <StyleConstellation />
         <Link className="text-link" href="/about">
-          The idea behind StyBay <span aria-hidden="true">↗</span>
+          The idea behind StyBay <span aria-hidden="true"><ArrowUpRight /></span>
         </Link>
       </section>
       <WaitlistCTA />

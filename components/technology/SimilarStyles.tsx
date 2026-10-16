@@ -1,4 +1,6 @@
 "use client";
+import { ArrowUpRight } from "@/components/ArrowIcons";
+
 import { useState } from "react";
 import { Label, ProductImage } from "../Primitives";
 import { productPools } from "@/lib/productCatalog";
@@ -113,7 +115,7 @@ export default function SimilarStyles() {
             <ProductImage index={productPools.visualDNA[i + 1]} />
             <span>
               {relationship.label}
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true"><ArrowUpRight /></span>
             </span>
           </button>
         ))}

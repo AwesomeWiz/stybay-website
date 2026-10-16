@@ -1,4 +1,6 @@
 "use client";
+import { ArrowDown } from "@/components/ArrowIcons";
+
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
@@ -471,7 +473,7 @@ export default function HeroDiscovery() {
 
         <a href="#experience">
           SCROLL TO DISCOVER{" "}
-          <span aria-hidden="true">↓</span>
+          <span aria-hidden="true"><ArrowDown /></span>
         </a>
 
         <span>
